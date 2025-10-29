@@ -3,7 +3,10 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+// Permitir solicitudes desde cualquier origen (Render incluido)
+app.use(cors({
+  origin: "*"
+}));
 app.use(express.json());
 
 let members = [
@@ -33,3 +36,4 @@ app.delete("/members/:ci", (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ Servidor backend corriendo en puerto ${PORT}`);
 });
+
